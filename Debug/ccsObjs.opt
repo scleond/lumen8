@@ -1,0 +1,1 @@
+"./clk_lumen8.obj" "./i2c_lumen8.obj" "./main.obj" "./msp432_startup_ccs.obj" "./printf.obj" "./tsl2561.obj" "./uart_lumen8.obj" "../msp432p401r.cmd" "S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/ccs/msp432p4xx_driverlib.lib" -l"libc.a" 
