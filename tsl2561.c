@@ -9,14 +9,12 @@
 
 void enableTSL2561(unsigned char integTime, unsigned char tslGain) {
 	i2cWriteByte(TSL2561_ADDR_FLOAT, TSL2561_COMMAND_BIT | TSL2561_REGISTER_CONTROL,TSL2561_COMMAND_BIT | TSL2561_CONTROL_POWERON);
-	_delay_cycles(1000);
 	i2cWriteByte(TSL2561_ADDR_FLOAT, TSL2561_COMMAND_BIT | TSL2561_REGISTER_TIMING ,TSL2561_COMMAND_BIT | integTime | tslGain );
 }
 
 unsigned int readChan0_TSL2561(){
 	int rxWord;
 	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN0_LOW) <<8 ;  //load CHAN0_LOW into most significant byte
-	_delay_cycles(500);
 	rxWord |= i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN0_HIGH);
 	return rxWord;
 }
@@ -24,7 +22,6 @@ unsigned int readChan0_TSL2561(){
 unsigned int readChan1_TSL2561(){
 	int rxWord;
 	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_LOW) <<8 ;  //load CHAN0_LOW into most significant byte
-	_delay_cycles(500);
 	rxWord |= i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_HIGH);
 	return rxWord;
 }

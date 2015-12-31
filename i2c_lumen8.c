@@ -7,6 +7,8 @@
 
 #include "i2c_lumen8.h"
 
+#define i2cDelay	500
+
 uint8_t TXData[2];        // Pointer to TX data
 uint8_t TXByteCtr;
 
@@ -65,11 +67,12 @@ void i2cWriteByte(const unsigned char slvAddr, const unsigned char regAddr, cons
 	while(txBusy());
 	UCB0CTLW0 |= UCTXSTP; 				// I2C stop condition
 	while (UCB0CTLW0 & UCTXSTP);
+	_delay_cycles(i2cDelay);
 }
 
 unsigned char i2cReadByte(const unsigned char slvAddr, const unsigned char regAddr){
 	char rxByte;
-	UCB0I2CSA = slvAddr;           // Slave Address is 039h when floating
+	UCB0I2CSA = slvAddr;
 	UCB0CTLW0 |= UCTR + UCTXSTT;             // I2C start condition with UCTR flag for transmit
 	while(txBusy() | startBusy());
 	UCB0TXBUF = regAddr;
@@ -80,6 +83,7 @@ unsigned char i2cReadByte(const unsigned char slvAddr, const unsigned char regAd
 	while (!(UCB0IFG & UCRXIFG0));
 	UCB0CTLW0 |= UCTXSTP;                    // I2C stop condition
 	rxByte = UCB0RXBUF;
+	_delay_cycles(i2cDelay);
 	return rxByte;
 }
 

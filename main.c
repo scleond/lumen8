@@ -35,14 +35,16 @@ int main(void){
 	enableTSL2561(integTime, tslGain);  //TSL2561 is default inactive. turn on here
 	initISL29125();  // set for full RGB mode
 
+	// why can't i read both i2c devices
+
 	while(1){
-		_delay_cycles(5000);
+		_delay_cycles(250000);
 		switch(senseState){
 		case READ_TSL2561:
 			lux = CalculateLux(tslGain, integTime, TSL2561_PACKAGE_T_FN_CL);
 			senseState = READ_ISL29125;
 		case READ_ISL29125:
-//			islID = readDevID_ISL29125();
+			islID = readDevID_ISL29125();
 			senseState = READ_TSL2561;
 		}
 	}
