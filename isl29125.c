@@ -8,7 +8,13 @@
 #include "isl29125.h"
 
 
+unsigned char readDevID_ISL29125(void){
+	unsigned char rxWord;
+	rxWord = i2cReadByte(ISL_I2C_ADDR, ISL_DEVICE_ID) <<8 ;  //read isl device ID to see if it's there
+	return rxWord;
+}
+
 void initISL29125(void){
-	i2cTx(ISL_I2C_ADDR, ISL_CONFIG_1, CFG1_MODE_RGB | CFG1_10KLUX | CFG1_12BIT );		//RGB mode, bright environment, fast read
+	i2cWriteByte(ISL_I2C_ADDR, ISL_CONFIG_1,CFG1_MODE_RGB);
 	_delay_cycles(1000);
 }

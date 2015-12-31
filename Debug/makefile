@@ -9,6 +9,7 @@ CG_TOOL_ROOT := S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3
 ORDERED_OBJS += \
 "./clk_lumen8.obj" \
 "./i2c_lumen8.obj" \
+"./isl29125.obj" \
 "./main.obj" \
 "./msp432_startup_ccs.obj" \
 "./printf.obj" \
@@ -121,40 +122,40 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-lumen8-MSP432.out \
+lumen.out \
 
 EXE_OUTPUTS__QUOTED += \
-"lumen8-MSP432.out" \
+"lumen.out" \
 
 BIN_OUTPUTS += \
-lumen8-MSP432.hex \
+lumen.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"lumen8-MSP432.hex" \
+"lumen.hex" \
 
 
 # All Target
-all: lumen8-MSP432.out
+all: lumen.out
 
 # Tool invocations
-lumen8-MSP432.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
+lumen.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MSP432 Linker'
-	"S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --advice:power=all -g --gcc --define=__MSP432P401R__ --define=TARGET_IS_MSP432P4XX --define=ccs --display_error_number --diag_warning=225 --diag_wrap=off -z -m"lumen8-MSP432.map" --heap_size=1024 --stack_size=512 -i"S:/ti/ccsv6/ccs_base/arm/include" -i"S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/lib" -i"S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="lumen8-MSP432_linkInfo.xml" --rom_model -o "lumen8-MSP432.out" $(ORDERED_OBJS)
+	"S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --advice:power=all -g --gcc --define=__MSP432P401R__ --define=TARGET_IS_MSP432P4XX --define=ccs --display_error_number --diag_warning=225 --diag_wrap=off -z -m"lumen.map" --heap_size=1024 --stack_size=512 -i"S:/ti/ccsv6/ccs_base/arm/include" -i"S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/lib" -i"S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="lumen_linkInfo.xml" --rom_model -o "lumen.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-lumen8-MSP432.hex: $(EXE_OUTPUTS)
+lumen.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: MSP432 Hex Utility'
-	"S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/bin/armhex"  -o "lumen8-MSP432.hex" $(EXE_OUTPUTS__QUOTED)
+	"S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/bin/armhex"  -o "lumen.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "clk_lumen8.pp" "i2c_lumen8.pp" "main.pp" "msp432_startup_ccs.pp" "printf.pp" "tsl2561.pp" "uart_lumen8.pp" 
-	-$(RM) "clk_lumen8.obj" "i2c_lumen8.obj" "main.obj" "msp432_startup_ccs.obj" "printf.obj" "tsl2561.obj" "uart_lumen8.obj" 
+	-$(RM) "clk_lumen8.pp" "i2c_lumen8.pp" "isl29125.pp" "main.pp" "msp432_startup_ccs.pp" "printf.pp" "tsl2561.pp" "uart_lumen8.pp" 
+	-$(RM) "clk_lumen8.obj" "i2c_lumen8.obj" "isl29125.obj" "main.obj" "msp432_startup_ccs.obj" "printf.obj" "tsl2561.obj" "uart_lumen8.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

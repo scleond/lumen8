@@ -16,11 +16,11 @@ MSP430G2553
 #ifndef ISL29125_h
 #define ISL29125_h
 
-#include "lumen8_MSP432.h"
 #include <msp.h>
-#include "i2c_lumen8_MSP432.h"
+#include "i2c_lumen8.h"
 
-//void initISL29125(void);
+unsigned char readDevID_ISL29125(void);
+void initISL29125(void);
 
 // ISL29125 I2C Address
 #define ISL_I2C_ADDR 0x44

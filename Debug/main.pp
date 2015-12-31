@@ -10,6 +10,8 @@ main.obj: S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cm4.h
 main.obj: S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cmInstr.h
 main.obj: S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cmFunc.h
 main.obj: S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cm4_simd.h
+main.obj: ../tsl2561.h
+main.obj: ../i2c_lumen8.h
 main.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/driverlib.h
 main.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/adc14.h
 main.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdbool.h
@@ -45,9 +47,8 @@ main.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/timer32
 main.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/timer_a.h
 main.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uart.h
 main.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h
-main.obj: ../i2c_lumen8.h
 main.obj: ../tsl2561.h
-main.obj: ../i2c_lumen8.h
+main.obj: ../isl29125.h
 main.obj: ../clk_lumen8.h
 main.obj: ../uart_lumen8.h
 main.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/string.h
@@ -64,6 +65,8 @@ S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cm4.h:
 S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cmInstr.h: 
 S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cmFunc.h: 
 S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cm4_simd.h: 
+../tsl2561.h: 
+../i2c_lumen8.h: 
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/driverlib.h: 
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/adc14.h: 
 S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdbool.h: 
@@ -99,9 +102,8 @@ S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/timer32.h:
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/timer_a.h: 
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uart.h: 
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h: 
-../i2c_lumen8.h: 
 ../tsl2561.h: 
-../i2c_lumen8.h: 
+../isl29125.h: 
 ../clk_lumen8.h: 
 ../uart_lumen8.h: 
 S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/string.h: 
