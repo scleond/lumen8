@@ -1,6 +1,8 @@
 # FIXED
 
 main.obj: ../main.c
+main.obj: ../lumen8.h
+main.obj: ../tsl2561.h
 main.obj: S:/ti/ccsv6/ccs_base/arm/include/msp.h
 main.obj: S:/ti/ccsv6/ccs_base/arm/include/msp432p401r.h
 main.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdint.h
@@ -10,7 +12,6 @@ main.obj: S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cm4.h
 main.obj: S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cmInstr.h
 main.obj: S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cmFunc.h
 main.obj: S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cm4_simd.h
-main.obj: ../tsl2561.h
 main.obj: ../i2c_lumen8.h
 main.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/driverlib.h
 main.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/adc14.h
@@ -56,6 +57,8 @@ main.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdlib.h
 main.obj: ../printf.h
 
 ../main.c: 
+../lumen8.h: 
+../tsl2561.h: 
 S:/ti/ccsv6/ccs_base/arm/include/msp.h: 
 S:/ti/ccsv6/ccs_base/arm/include/msp432p401r.h: 
 S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdint.h: 
@@ -65,7 +68,6 @@ S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cm4.h:
 S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cmInstr.h: 
 S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cmFunc.h: 
 S:/ti/ccsv6/ccs_base/arm/include/CMSIS/core_cm4_simd.h: 
-../tsl2561.h: 
 ../i2c_lumen8.h: 
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/driverlib.h: 
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/adc14.h: 

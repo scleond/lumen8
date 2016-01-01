@@ -50,9 +50,9 @@ unsigned int readChan1_TSL2561(){
 unsigned int CalculateLux(unsigned int iGain, unsigned int tInt,int iType){
 
 	unsigned int ch0 = readChan0_TSL2561();
-	_delay_cycles(10000);
+	_delay_cycles(20000);
 	unsigned int ch1 = readChan1_TSL2561();
-	_delay_cycles(10000);
+	_delay_cycles(20000);
 
 
 	unsigned long chScale;
