@@ -29,5 +29,16 @@ unsigned char readMonth(void);
 unsigned char readYear(void);
 
 
+/* used in main.c to set time once. very hacky.*/
+//	i2cWriteByte(DS1307_ADDR, DS1307_SEC,0x00);
+//	i2cWriteByte(DS1307_ADDR, DS1307_MIN,0x37);
+//	i2cWriteByte(DS1307_ADDR, DS1307_HR,0x59);
+//	i2cWriteByte(DS1307_ADDR, DS1307_DD,0x04);
+//	i2cWriteByte(DS1307_ADDR, DS1307_MM,0x01);
+//	i2cWriteByte(DS1307_ADDR, DS1307_YY,0x16);
+//	i2cWriteByte(DS1307_ADDR, DS1307_YY,0x16);
+//	i2cWriteByte(DS1307_ADDR, DS1307_YY,0x16);
+
+
 
 #endif /* DS1307_H_ */

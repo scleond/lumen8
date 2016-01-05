@@ -24,21 +24,9 @@ int main(void){
 	unsigned char rtcMonth;
 	unsigned char rtcYear;
 
-
 	initCLK();  //set DCO for 2MHz. Adjusting this will require adjusting i2c baudrate settings
 	initI2C();
 	enableSensors(tslIntegTime, tslGain);
-
-	i2cWriteByte(DS1307_ADDR, DS1307_SEC,0x00);
-	i2cWriteByte(DS1307_ADDR, DS1307_MIN,0x37);
-//	i2cWriteByte(DS1307_ADDR, DS1307_HR,0x59);
-//	i2cWriteByte(DS1307_ADDR, DS1307_DD,0x04);
-//	i2cWriteByte(DS1307_ADDR, DS1307_MM,0x01);
-//	i2cWriteByte(DS1307_ADDR, DS1307_YY,0x16);
-//	i2cWriteByte(DS1307_ADDR, DS1307_YY,0x16);
-//	i2cWriteByte(DS1307_ADDR, DS1307_YY,0x16);
-
-
 
 	while(1){
 		_delay_cycles(25000);
