@@ -8,6 +8,7 @@ CG_TOOL_ROOT := S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3
 
 ORDERED_OBJS += \
 "./clk_lumen8.obj" \
+"./ds1307.obj" \
 "./i2c_lumen8.obj" \
 "./isl29125.obj" \
 "./lumen8.obj" \
@@ -155,8 +156,8 @@ lumen.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "clk_lumen8.pp" "i2c_lumen8.pp" "isl29125.pp" "lumen8.pp" "main.pp" "msp432_startup_ccs.pp" "printf.pp" "tsl2561.pp" "uart_lumen8.pp" 
-	-$(RM) "clk_lumen8.obj" "i2c_lumen8.obj" "isl29125.obj" "lumen8.obj" "main.obj" "msp432_startup_ccs.obj" "printf.obj" "tsl2561.obj" "uart_lumen8.obj" 
+	-$(RM) "clk_lumen8.pp" "ds1307.pp" "i2c_lumen8.pp" "isl29125.pp" "lumen8.pp" "main.pp" "msp432_startup_ccs.pp" "printf.pp" "tsl2561.pp" "uart_lumen8.pp" 
+	-$(RM) "clk_lumen8.obj" "ds1307.obj" "i2c_lumen8.obj" "isl29125.obj" "lumen8.obj" "main.obj" "msp432_startup_ccs.obj" "printf.obj" "tsl2561.obj" "uart_lumen8.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

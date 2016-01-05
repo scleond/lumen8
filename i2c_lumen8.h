@@ -15,6 +15,7 @@ void initI2C(void);
 void i2cFlush(void);
 char txBusy(void);
 char startBusy(void);
+char rxBusy(void);
 void enableTSL2561(unsigned char integTime, unsigned char tslGain);
 
 void i2cWriteByte(const unsigned char slvAddr, const unsigned char regAddr, const unsigned char txData);

@@ -10,6 +10,13 @@ clk_lumen8.obj: ../clk_lumen8.c $(GEN_OPTS) $(GEN_HDRS)
 	@echo 'Finished building: $<'
 	@echo ' '
 
+ds1307.obj: ../ds1307.c $(GEN_OPTS) $(GEN_HDRS)
+	@echo 'Building file: $<'
+	@echo 'Invoking: MSP432 Compiler'
+	"S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 --abi=eabi -me --include_path="S:/ti/ccsv6/ccs_base/arm/include" --include_path="S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/" --include_path="S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include" --include_path="S:/ti/ccsv6/ccs_base/arm/include/CMSIS" --advice:power=all -g --gcc --define=__MSP432P401R__ --define=TARGET_IS_MSP432P4XX --define=ccs --display_error_number --diag_warning=225 --diag_wrap=off --preproc_with_compile --preproc_dependency="ds1307.pp" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
 i2c_lumen8.obj: ../i2c_lumen8.c $(GEN_OPTS) $(GEN_HDRS)
 	@echo 'Building file: $<'
 	@echo 'Invoking: MSP432 Compiler'

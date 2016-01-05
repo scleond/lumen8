@@ -10,6 +10,7 @@
 
 #include "tsl2561.h"
 #include "isl29125.h"
+#include "ds1307.h"
 #include "driverlib.h"
 #include "i2c_lumen8.h"
 #include "clk_lumen8.h"
@@ -20,8 +21,9 @@
 #include "printf.h"
 #include "msp.h"
 
-#define READ_TSL2561 		(0x00)
-#define READ_ISL29125		(0x01)
+#define READ_TSL2561 		(0x00)  // lux sensor
+#define READ_ISL29125		(0x01)  // rgb sensor
+#define READ_DS1307			(0x02)  // RTC
 
 void enableSensors(unsigned char tslIntegTime, unsigned char tslGain);
 
