@@ -52,10 +52,8 @@ lumen8.obj: ../tsl2561.h
 lumen8.obj: ../isl29125.h
 lumen8.obj: ../ds1307.h
 lumen8.obj: ../clk_lumen8.h
-lumen8.obj: ../uart_lumen8.h
 lumen8.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/string.h
 lumen8.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdlib.h
-lumen8.obj: ../printf.h
 
 ../lumen8.c: 
 ../lumen8.h: 
@@ -109,7 +107,5 @@ S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h:
 ../isl29125.h: 
 ../ds1307.h: 
 ../clk_lumen8.h: 
-../uart_lumen8.h: 
 S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/string.h: 
 S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdlib.h: 
-../printf.h: 

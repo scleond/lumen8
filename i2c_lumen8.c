@@ -16,7 +16,7 @@ const eUSCI_I2C_MasterConfig i2cConfig =
 {
         EUSCI_B_I2C_CLOCKSOURCE_SMCLK,          // SMCLK Clock Source
         500000,                                	// SMCLK = 3MHz
-        EUSCI_B_I2C_SET_DATA_RATE_100KBPS,      // Desired I2C Clock of 100khz
+        50000,      							// Desired I2C Clock of 50khz
         0,                                      // No byte counter threshold
         EUSCI_B_I2C_NO_AUTO_STOP                // No Autostop
 };
@@ -66,7 +66,7 @@ char rxBusy(void){
 }
 
 void i2cWriteByte(const unsigned char slvAddr, const unsigned char regAddr, const unsigned char txData) {
-	while (stopBusy());
+	while(stopBusy());
 	UCB0I2CSA = slvAddr; // set slave address
 	UCB0CTLW0 |= UCTR + UCTXSTT;	// put in transmitter mode and send start bit
 	while(txBusy() | startBusy());
@@ -75,24 +75,25 @@ void i2cWriteByte(const unsigned char slvAddr, const unsigned char regAddr, cons
 	UCB0TXBUF = txData; // setting TXBUF clears the TXIFG flag
 	while(txBusy());
 	UCB0CTLW0 |= UCTXSTP; 				// I2C stop condition
-	while (stopBusy());
+	while(stopBusy());
 	_delay_cycles(i2cDelay);
 }
 
 unsigned char i2cReadByte(const unsigned char slvAddr, const unsigned char regAddr){
 	char rxByte;
-	while (stopBusy());
+	while(stopBusy());
 	UCB0I2CSA = slvAddr;  // set slave addr
-	UCB0CTLW0 |= UCTR + UCTXSTT;  // i2c start
-	while(txBusy() | startBusy());
+	UCB0CTLW0 |= UCTR | UCTXSTT;  // i2c start
+	while(startBusy());
 	UCB0TXBUF = regAddr;
 	while(txBusy());
 	UCB0CTLW0 &= ~UCTR ;
 	UCB0CTLW0 |= UCTXSTT;
-	while(rxBusy() | startBusy());
+	while(startBusy());
 	UCB0CTLW0 |= UCTXSTP;  // i2c stop
+	while(rxBusy());
 	rxByte = UCB0RXBUF;
-	while (stopBusy());
+//	while(stopBusy());
 	_delay_cycles(i2cDelay);
 	return rxByte;
 

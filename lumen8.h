@@ -14,11 +14,9 @@
 #include "driverlib.h"
 #include "i2c_lumen8.h"
 #include "clk_lumen8.h"
-#include "uart_lumen8.h"
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include "printf.h"
 #include "msp.h"
 
 #define READ_TSL2561 		(0x00)  // lux sensor

@@ -15,13 +15,15 @@ void enableTSL2561(unsigned char integTime, unsigned char tslGain) {
 unsigned int readChan0_TSL2561(){
 	int rxWord;
 	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN0_LOW) <<8 ;  //load CHAN0_LOW into most significant byte
+	_delay_cycles(1000);
 	rxWord |= i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN0_HIGH);
 	return rxWord;
 }
 
 unsigned int readChan1_TSL2561(){
 	int rxWord;
-	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_LOW) <<8 ;  //load CHAN0_LOW into most significant byte
+	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_LOW) <<8 ;  //load CHAN1_LOW into most significant byte
+	_delay_cycles(1000);
 	rxWord |= i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_HIGH);
 	return rxWord;
 }
@@ -49,10 +51,10 @@ unsigned int readChan1_TSL2561(){
 //////////////////////////////////////////////////////////////////////////////
 unsigned int CalculateLux(unsigned int iGain, unsigned int tInt,int iType){
 
-	unsigned int ch0 = readChan0_TSL2561();
-	_delay_cycles(20000);
-	unsigned int ch1 = readChan1_TSL2561();
-	_delay_cycles(20000);
+	unsigned short ch0 = readChan0_TSL2561();
+	_delay_cycles(100000);
+	unsigned short ch1 = readChan1_TSL2561();
+	_delay_cycles(100000);
 
 
 	unsigned long chScale;

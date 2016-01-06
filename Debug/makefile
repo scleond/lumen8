@@ -14,9 +14,7 @@ ORDERED_OBJS += \
 "./lumen8.obj" \
 "./main.obj" \
 "./msp432_startup_ccs.obj" \
-"./printf.obj" \
 "./tsl2561.obj" \
-"./uart_lumen8.obj" \
 "../msp432p401r.cmd" \
 "S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/ccs/msp432p4xx_driverlib.lib" \
 $(GEN_CMDS__FLAG) \
@@ -156,8 +154,8 @@ lumen.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "clk_lumen8.pp" "ds1307.pp" "i2c_lumen8.pp" "isl29125.pp" "lumen8.pp" "main.pp" "msp432_startup_ccs.pp" "printf.pp" "tsl2561.pp" "uart_lumen8.pp" 
-	-$(RM) "clk_lumen8.obj" "ds1307.obj" "i2c_lumen8.obj" "isl29125.obj" "lumen8.obj" "main.obj" "msp432_startup_ccs.obj" "printf.obj" "tsl2561.obj" "uart_lumen8.obj" 
+	-$(RM) "clk_lumen8.pp" "ds1307.pp" "i2c_lumen8.pp" "isl29125.pp" "lumen8.pp" "main.pp" "msp432_startup_ccs.pp" "tsl2561.pp" 
+	-$(RM) "clk_lumen8.obj" "ds1307.obj" "i2c_lumen8.obj" "isl29125.obj" "lumen8.obj" "main.obj" "msp432_startup_ccs.obj" "tsl2561.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

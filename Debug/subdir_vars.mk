@@ -17,9 +17,7 @@ C_SRCS += \
 ../lumen8.c \
 ../main.c \
 ../msp432_startup_ccs.c \
-../printf.c \
-../tsl2561.c \
-../uart_lumen8.c 
+../tsl2561.c 
 
 OBJS += \
 ./clk_lumen8.obj \
@@ -29,9 +27,7 @@ OBJS += \
 ./lumen8.obj \
 ./main.obj \
 ./msp432_startup_ccs.obj \
-./printf.obj \
-./tsl2561.obj \
-./uart_lumen8.obj 
+./tsl2561.obj 
 
 C_DEPS += \
 ./clk_lumen8.pp \
@@ -41,9 +37,7 @@ C_DEPS += \
 ./lumen8.pp \
 ./main.pp \
 ./msp432_startup_ccs.pp \
-./printf.pp \
-./tsl2561.pp \
-./uart_lumen8.pp 
+./tsl2561.pp 
 
 C_DEPS__QUOTED += \
 "clk_lumen8.pp" \
@@ -53,9 +47,7 @@ C_DEPS__QUOTED += \
 "lumen8.pp" \
 "main.pp" \
 "msp432_startup_ccs.pp" \
-"printf.pp" \
-"tsl2561.pp" \
-"uart_lumen8.pp" 
+"tsl2561.pp" 
 
 OBJS__QUOTED += \
 "clk_lumen8.obj" \
@@ -65,9 +57,7 @@ OBJS__QUOTED += \
 "lumen8.obj" \
 "main.obj" \
 "msp432_startup_ccs.obj" \
-"printf.obj" \
-"tsl2561.obj" \
-"uart_lumen8.obj" 
+"tsl2561.obj" 
 
 C_SRCS__QUOTED += \
 "../clk_lumen8.c" \
@@ -77,8 +67,6 @@ C_SRCS__QUOTED += \
 "../lumen8.c" \
 "../main.c" \
 "../msp432_startup_ccs.c" \
-"../printf.c" \
-"../tsl2561.c" \
-"../uart_lumen8.c" 
+"../tsl2561.c" 
 
 
