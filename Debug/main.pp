@@ -54,7 +54,7 @@ main.obj: ../isl29125.h
 main.obj: ../ds1307.h
 main.obj: ../timerA_lumen8.h
 main.obj: ../spi_lumen8.h
-main.obj: ../ws2812_lumen8.h
+main.obj: ../ws2812.h
 main.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/string.h
 main.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdlib.h
 
@@ -112,6 +112,6 @@ S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h:
 ../ds1307.h: 
 ../timerA_lumen8.h: 
 ../spi_lumen8.h: 
-../ws2812_lumen8.h: 
+../ws2812.h: 
 S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/string.h: 
 S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdlib.h: 

@@ -16,7 +16,7 @@
 #include "i2c_lumen8.h"
 #include "clk_lumen8.h"
 #include "spi_lumen8.h"
-#include "ws2812_lumen8.h"
+#include "ws2812.h"
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>

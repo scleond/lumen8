@@ -1,5 +1,12 @@
+/*
+ * ws2812.c
+ *
+ *  Created on: Jan 9, 2016
+ *      Author: Chris
+ */
 
-#include "ws2812_lumen8.h"
+//
+#include "ws2812.h"
 
 typedef struct {
 	uint8_t red;
@@ -40,7 +47,7 @@ uint8_t txBusySPI(void){
 void showStrip(){
 //	__bic_SR_register(GIE);       	// disable interrupts
 	MAP_Interrupt_disableMaster();
-	
+
 	// send RGB color for every LED
 	int i, j;
 	for (i = 0; i < NUM_LEDS; i++){
@@ -86,3 +93,4 @@ void fillStrip(uint8_t r, uint8_t g, uint8_t b){
 	}
 	showStrip();						// refresh strip
 }
+

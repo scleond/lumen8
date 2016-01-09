@@ -1,12 +1,15 @@
-#ifndef WS2812_LUMEN8_h
-#define WS2812_LUMEN8_h
+/*
+ * ws2812.h
+ *
+ *  Created on: Jan 9, 2016
+ *      Author: Chris
+ */
 
-#include <msp.h>
+#ifndef WS2812_H_
+#define WS2812_H_
+
+#include "msp.h"
 #include "driverlib.h"
-
-//// Useful typedefs
-//typedef unsigned char u_char;		// 8 bit
-//typedef unsigned int u_int;			// 16 bit
 
 // Transmit codes
 #define HIGH_CODE	(0xF0)			// b11110000
@@ -27,4 +30,5 @@ void clearStrip(void);
 // Fill the strip with a solid color. This will update the strip.
 void fillStrip(uint8_t r, uint8_t g, uint8_t b);
 
-#endif
+
+#endif /* WS2812_H_ */

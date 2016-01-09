@@ -20,7 +20,7 @@ C_SRCS += \
 ../spi_lumen8.c \
 ../timerA_lumen8.c \
 ../tsl2561.c \
-../ws2812_lumen8.c 
+../ws2812.c 
 
 OBJS += \
 ./clk_lumen8.obj \
@@ -33,7 +33,7 @@ OBJS += \
 ./spi_lumen8.obj \
 ./timerA_lumen8.obj \
 ./tsl2561.obj \
-./ws2812_lumen8.obj 
+./ws2812.obj 
 
 C_DEPS += \
 ./clk_lumen8.pp \
@@ -46,7 +46,7 @@ C_DEPS += \
 ./spi_lumen8.pp \
 ./timerA_lumen8.pp \
 ./tsl2561.pp \
-./ws2812_lumen8.pp 
+./ws2812.pp 
 
 C_DEPS__QUOTED += \
 "clk_lumen8.pp" \
@@ -59,7 +59,7 @@ C_DEPS__QUOTED += \
 "spi_lumen8.pp" \
 "timerA_lumen8.pp" \
 "tsl2561.pp" \
-"ws2812_lumen8.pp" 
+"ws2812.pp" 
 
 OBJS__QUOTED += \
 "clk_lumen8.obj" \
@@ -72,7 +72,7 @@ OBJS__QUOTED += \
 "spi_lumen8.obj" \
 "timerA_lumen8.obj" \
 "tsl2561.obj" \
-"ws2812_lumen8.obj" 
+"ws2812.obj" 
 
 C_SRCS__QUOTED += \
 "../clk_lumen8.c" \
@@ -85,6 +85,6 @@ C_SRCS__QUOTED += \
 "../spi_lumen8.c" \
 "../timerA_lumen8.c" \
 "../tsl2561.c" \
-"../ws2812_lumen8.c" 
+"../ws2812.c" 
 
 

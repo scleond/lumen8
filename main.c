@@ -30,7 +30,7 @@ int main(void){
 //	initTimerA0();
 
     /* Enabling MASTER interrupts */
-    MAP_Interrupt_enableMaster();
+//    MAP_Interrupt_enableMaster();
 
     initSPI();
 
