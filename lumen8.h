@@ -23,6 +23,6 @@
 #define READ_ISL29125		(0x01)  // rgb sensor
 #define READ_DS1307			(0x02)  // RTC
 
-void enableSensors(unsigned char tslIntegTime, unsigned char tslGain);
+void enableSensors(uint8_t tslIntegTime, uint8_t tslGain);
 
 #endif /* LUMEN8_H_ */

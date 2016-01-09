@@ -21,12 +21,12 @@
 #define DS1307_MM				(0x05)
 #define DS1307_YY				(0x06)
 
-unsigned char readSeconds(void);
-unsigned char readMinutes(void);
-unsigned char readHours(void);
-unsigned char readDate(void);
-unsigned char readMonth(void);
-unsigned char readYear(void);
+uint8_t readSeconds(void);
+uint8_t readMinutes(void);
+uint8_t readHours(void);
+uint8_t readDate(void);
+uint8_t readMonth(void);
+uint8_t readYear(void);
 
 
 /* used in main.c to set time once. very hacky.*/

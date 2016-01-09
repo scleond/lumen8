@@ -7,7 +7,7 @@
 
 #include "lumen8.h"
 
-void enableSensors(unsigned char tslIntegTime, unsigned char tslGain){
+void enableSensors(uint8_t tslIntegTime, uint8_t tslGain){
 	enableTSL2561(tslIntegTime, tslGain);  //TSL2561 is default inactive. turn on here
 	initISL29125();  // set for full RGB mode
 }

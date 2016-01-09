@@ -1,9 +1,6 @@
 /* Chris made this*/
 
-
 #include "lumen8.h"
-
-uint8_t senseState = READ_TSL2561;
 
 int main(void){
 	MAP_WDT_A_holdTimer();  // stop watchdog
@@ -19,6 +16,8 @@ int main(void){
 	uint8_t rtcSeconds;
 	uint8_t rtcMinutes;
 	uint8_t rtcHours;
+
+	uint8_t senseState = READ_TSL2561;
 
 	initCLK();  //set DCO for 16MHz. Adjusting this will require adjusting i2c baudrate settings
 	initI2C();
@@ -36,7 +35,6 @@ int main(void){
 			senseState = READ_DS1307;
 		}
 		else if(senseState == READ_DS1307){
-			rtcSeconds = readSeconds();
 			rtcMinutes = readMinutes();
 			rtcHours = readHours();
 			senseState = READ_TSL2561;

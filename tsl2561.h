@@ -17,7 +17,7 @@ uint16_t readChan0_TSL2561();
 uint16_t readChan0Word_TSL2561();
 uint16_t readChan1_TSL2561();
 uint16_t readChan1Word_TSL2561();
-uint16_t CalculateLux(uint16_t iGain, uint16_t tInt, int16_t iType);
+uint16_t CalculateLux(uint16_t iGain, uint16_t tInt, uint16_t iType);
 
 
 // Default is float

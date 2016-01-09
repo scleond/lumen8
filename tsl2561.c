@@ -13,27 +13,27 @@ void enableTSL2561(uint8_t integTime, uint8_t tslGain) {
 }
 
 uint16_t readChan0_TSL2561(){
-	int rxWord;
+	uint16_t rxWord;
 	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN0_LOW);  //load CHAN0_LOW into most significant byte
 	rxWord |= i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN0_HIGH) << 8;
 	return rxWord;
 }
 
 uint16_t readChan0Word_TSL2561(){
-	int rxWord;
+	uint16_t rxWord;
 	rxWord = i2cReadWord(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_WORD_BIT | TSL2561_REGISTER_CHAN0_LOW);  // read full word
 	return rxWord;
 }
 
 uint16_t readChan1_TSL2561(){
-	int rxWord;
+	uint16_t rxWord;
 	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_LOW);  //load CHAN1_LOW into most significant byte
 	rxWord |= i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_HIGH) << 8;
 	return rxWord;
 }
 
 uint16_t readChan1Word_TSL2561(){
-	int rxWord;
+	uint16_t rxWord;
 	rxWord = i2cReadWord(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_WORD_BIT | TSL2561_REGISTER_CHAN1_LOW);
 	return rxWord;
 }
@@ -43,7 +43,7 @@ uint16_t readChan1Word_TSL2561(){
 //taken from lux.cpp by taos
 // lux equation approximation without floating point calculations
 //////////////////////////////////////////////////////////////////////////////
-// Routine: uint16_t CalculateLux(uint16_t ch0, uint16_t ch0, int iType)
+// Routine: uint16_t CalculateLux(uint16_t ch0, uint16_t ch0, uint16_t iType)
 //
 // Description: Calculate the approximate illuminance (lux) given the raw
 // channel values of the TSL2560. The equation if implemented
@@ -59,15 +59,15 @@ uint16_t readChan1Word_TSL2561(){
 // Return: uint16_t - the approximate illuminance (lux)
 //
 //////////////////////////////////////////////////////////////////////////////
-uint16_t CalculateLux(uint16_t iGain, uint16_t tInt, int16_t iType){
+uint16_t CalculateLux(uint16_t iGain, uint16_t tInt, uint16_t iType){
 
 
-	unsigned short ch0 = readChan0_TSL2561();
-	unsigned short ch1 = readChan1_TSL2561();
+	uint16_t ch0 = readChan0_TSL2561();
+	uint16_t ch1 = readChan1_TSL2561();
 
-	unsigned long chScale;
-	unsigned long channel1;
-	unsigned long channel0;
+	uint32_t chScale;
+	uint32_t channel1;
+	uint32_t channel0;
 
 	switch (tInt)
 	{
@@ -90,10 +90,10 @@ uint16_t CalculateLux(uint16_t iGain, uint16_t tInt, int16_t iType){
 	//
 	// find the ratio of the channel values (Channel1/Channel0)
 	// protect against divide by zero
-	unsigned long ratio1 = 0;
+	uint32_t ratio1 = 0;
 	if (channel0 != 0) ratio1 = (channel1 << (TSL2561_LUX_RATIOSCALE+1)) / channel0;
 	// round the ratio value
-	unsigned long ratio = (ratio1 + 1) >> 1;
+	uint32_t ratio = (ratio1 + 1) >> 1;
 	// is ratio <= eachBreak ?
 	uint16_t b, m;
 	switch (iType)
@@ -135,12 +135,12 @@ uint16_t CalculateLux(uint16_t iGain, uint16_t tInt, int16_t iType){
 		{b=TSL2561_LUX_B8C; m=TSL2561_LUX_M8C;}
 		break;
 	}
-	unsigned long temp;
+	uint32_t temp;
 	temp = ((channel0 * b) - (channel1 * m));
 	// round lsb (2^(LUX_SCALE-1))
 	temp += (1 << (TSL2561_LUX_LUXSCALE-1));
 	// strip off fractional portion
-	unsigned long lux = temp >> TSL2561_LUX_LUXSCALE;
+	uint32_t lux = temp >> TSL2561_LUX_LUXSCALE;
 	return(lux);
 }
 

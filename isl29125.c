@@ -8,8 +8,8 @@
 #include "isl29125.h"
 
 
-unsigned char readDevID_ISL29125(void){
-	unsigned char rxWord;
+uint8_t readDevID_ISL29125(void){
+	uint8_t rxWord;
 	rxWord = i2cReadByte(ISL_I2C_ADDR, ISL_DEVICE_ID);  //read isl device ID to see if it's there
 	return rxWord;
 }

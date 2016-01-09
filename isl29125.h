@@ -19,7 +19,7 @@ MSP430G2553
 #include <msp.h>
 #include "i2c_lumen8.h"
 
-unsigned char readDevID_ISL29125(void);
+uint8_t readDevID_ISL29125(void);
 void initISL29125(void);
 
 // ISL29125 I2C Address
