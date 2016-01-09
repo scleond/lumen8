@@ -7,24 +7,34 @@
 
 #include "tsl2561.h"
 
-void enableTSL2561(unsigned char integTime, unsigned char tslGain) {
+void enableTSL2561(uint8_t integTime, uint8_t tslGain) {
 	i2cWriteByte(TSL2561_ADDR_FLOAT, TSL2561_COMMAND_BIT | TSL2561_REGISTER_CONTROL,TSL2561_COMMAND_BIT | TSL2561_CONTROL_POWERON);
 	i2cWriteByte(TSL2561_ADDR_FLOAT, TSL2561_COMMAND_BIT | TSL2561_REGISTER_TIMING ,TSL2561_COMMAND_BIT | integTime | tslGain );
 }
 
-unsigned int readChan0_TSL2561(){
+uint16_t readChan0_TSL2561(){
 	int rxWord;
-	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN0_LOW) <<8 ;  //load CHAN0_LOW into most significant byte
-	_delay_cycles(1000);
-	rxWord |= i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN0_HIGH);
+	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN0_LOW);  //load CHAN0_LOW into most significant byte
+	rxWord |= i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN0_HIGH) << 8;
 	return rxWord;
 }
 
-unsigned int readChan1_TSL2561(){
+uint16_t readChan0Word_TSL2561(){
 	int rxWord;
-	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_LOW) <<8 ;  //load CHAN1_LOW into most significant byte
-	_delay_cycles(1000);
-	rxWord |= i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_HIGH);
+	rxWord = i2cReadWord(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_WORD_BIT | TSL2561_REGISTER_CHAN0_LOW);  // read full word
+	return rxWord;
+}
+
+uint16_t readChan1_TSL2561(){
+	int rxWord;
+	rxWord = i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_LOW);  //load CHAN1_LOW into most significant byte
+	rxWord |= i2cReadByte(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_REGISTER_CHAN1_HIGH) << 8;
+	return rxWord;
+}
+
+uint16_t readChan1Word_TSL2561(){
+	int rxWord;
+	rxWord = i2cReadWord(TSL2561_ADDR_FLOAT,TSL2561_COMMAND_BIT | TSL2561_WORD_BIT | TSL2561_REGISTER_CHAN1_LOW);
 	return rxWord;
 }
 
@@ -33,29 +43,27 @@ unsigned int readChan1_TSL2561(){
 //taken from lux.cpp by taos
 // lux equation approximation without floating point calculations
 //////////////////////////////////////////////////////////////////////////////
-// Routine: unsigned int CalculateLux(unsigned int ch0, unsigned int ch0, int iType)
+// Routine: uint16_t CalculateLux(uint16_t ch0, uint16_t ch0, int iType)
 //
 // Description: Calculate the approximate illuminance (lux) given the raw
 // channel values of the TSL2560. The equation if implemented
 // as a piece-wise linear approximation.
 //
-// Arguments: unsigned int iGain - gain, where 0:1X, 1:16X
-// unsigned int tInt - integration time, where 0:13.7mS, 1:100mS, 2:402mS,
+// Arguments: uint16_t iGain - gain, where 0:1X, 1:16X
+// uint16_t tInt - integration time, where 0:13.7mS, 1:100mS, 2:402mS,
 // 3:Manual
-// unsigned int ch0 - raw channel value from channel 0 of TSL2560
-// unsigned int ch1 - raw channel value from channel 1 of TSL2560
-// unsigned int iType - package type (T or CS)
+// uint16_t ch0 - raw channel value from channel 0 of TSL2560
+// uint16_t ch1 - raw channel value from channel 1 of TSL2560
+// uint16_t iType - package type (T or CS)
 //
-// Return: unsigned int - the approximate illuminance (lux)
+// Return: uint16_t - the approximate illuminance (lux)
 //
 //////////////////////////////////////////////////////////////////////////////
-unsigned int CalculateLux(unsigned int iGain, unsigned int tInt,int iType){
+uint16_t CalculateLux(uint16_t iGain, uint16_t tInt, int16_t iType){
+
 
 	unsigned short ch0 = readChan0_TSL2561();
-	_delay_cycles(100000);
 	unsigned short ch1 = readChan1_TSL2561();
-	_delay_cycles(100000);
-
 
 	unsigned long chScale;
 	unsigned long channel1;
@@ -87,7 +95,7 @@ unsigned int CalculateLux(unsigned int iGain, unsigned int tInt,int iType){
 	// round the ratio value
 	unsigned long ratio = (ratio1 + 1) >> 1;
 	// is ratio <= eachBreak ?
-	unsigned int b, m;
+	uint16_t b, m;
 	switch (iType)
 	{
 	case 0: // T, FN and CL package

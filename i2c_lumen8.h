@@ -16,10 +16,12 @@ void i2cFlush(void);
 char txBusy(void);
 char startBusy(void);
 char rxBusy(void);
-void enableTSL2561(unsigned char integTime, unsigned char tslGain);
+void enableTSL2561(uint8_t integTime, uint8_t tslGain);
 
-void i2cWriteByte(const unsigned char slvAddr, const unsigned char regAddr, const unsigned char txData);
-unsigned char i2cReadByte(const unsigned char slvAddr, const unsigned char regAddr);
+void i2cWriteByte(const uint8_t slvAddr, const uint8_t regAddr, const uint8_t txData);
+uint8_t i2cReadByte(const uint8_t slvAddr, const uint8_t regAddr);
+uint8_t i2cReadByteTSL(const uint8_t slvAddr, const uint8_t regAddr);
+uint16_t i2cReadWord(const uint8_t slvAddr, const uint8_t regAddr);
 
 
 
