@@ -12,3 +12,7 @@ void enableSensors(uint8_t tslIntegTime, uint8_t tslGain){
 	initISL29125();  // set for full RGB mode
 }
 
+void initGPIO(void){
+	MAP_GPIO_setAsOutputPin(GPIO_PORT_P5, GPIO_PIN5);
+	MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P5, GPIO_PIN5);
+}

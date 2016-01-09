@@ -10,12 +10,13 @@
 
 #include "driverlib.h"
 #include "tsl2561.h"
+#include "clk_lumen8.h"
 
 void initI2C(void);
 void i2cFlush(void);
-char txBusy(void);
-char startBusy(void);
-char rxBusy(void);
+uint8_t txBusy(void);
+uint8_t startBusy(void);
+uint8_t rxBusy(void);
 void enableTSL2561(uint8_t integTime, uint8_t tslGain);
 
 void i2cWriteByte(const uint8_t slvAddr, const uint8_t regAddr, const uint8_t txData);

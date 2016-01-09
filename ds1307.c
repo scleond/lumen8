@@ -22,6 +22,7 @@ uint8_t readMinutes(){
 uint8_t readHours(){
 	uint8_t rxWord;
 	rxWord = i2cReadByte(DS1307_ADDR,DS1307_HR);
+	return rxWord;
 	return rxWord & 0xBF;  // remove the 24 hr flag in bit 6 for easier reading
 }
 

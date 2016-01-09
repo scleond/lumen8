@@ -48,6 +48,7 @@ i2c_lumen8.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/u
 i2c_lumen8.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h
 i2c_lumen8.obj: ../tsl2561.h
 i2c_lumen8.obj: ../i2c_lumen8.h
+i2c_lumen8.obj: ../clk_lumen8.h
 
 ../i2c_lumen8.c: 
 ../i2c_lumen8.h: 
@@ -97,3 +98,4 @@ S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uart.h:
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h: 
 ../tsl2561.h: 
 ../i2c_lumen8.h: 
+../clk_lumen8.h: 

@@ -49,6 +49,7 @@ isl29125.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uar
 isl29125.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h
 isl29125.obj: ../tsl2561.h
 isl29125.obj: ../i2c_lumen8.h
+isl29125.obj: ../clk_lumen8.h
 
 ../isl29125.c: 
 ../isl29125.h: 
@@ -99,3 +100,4 @@ S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uart.h:
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h: 
 ../tsl2561.h: 
 ../i2c_lumen8.h: 
+../clk_lumen8.h: 

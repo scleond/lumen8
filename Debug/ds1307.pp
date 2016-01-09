@@ -49,6 +49,7 @@ ds1307.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uart.
 ds1307.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h
 ds1307.obj: ../tsl2561.h
 ds1307.obj: ../i2c_lumen8.h
+ds1307.obj: ../clk_lumen8.h
 
 ../ds1307.c: 
 ../ds1307.h: 
@@ -99,3 +100,4 @@ S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uart.h:
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h: 
 ../tsl2561.h: 
 ../i2c_lumen8.h: 
+../clk_lumen8.h: 

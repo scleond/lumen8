@@ -7,10 +7,11 @@
 
 #include "i2c_lumen8.h"
 
+
 const eUSCI_I2C_MasterConfig i2cConfig =
 {
         EUSCI_B_I2C_CLOCKSOURCE_SMCLK,          // SMCLK Clock Source
-        1000000,                                // SMCLK = 1MHz
+		SMCLK_HZ,                                // SMCLK = 16MHz
 		EUSCI_B_I2C_SET_DATA_RATE_100KBPS,      // Desired I2C Clock of 100khz
         0,                                      // No byte counter threshold
         EUSCI_B_I2C_NO_AUTO_STOP                // No Autostop
@@ -44,19 +45,19 @@ void i2cFlush(void){
 	P1DIR &= ~BIT7;				//set bit 7back to default
 }
 
-char txBusy(void){
+uint8_t txBusy(void){
 	return !(UCB0IFG & UCTXIFG0);
 }
 
-char startBusy(void){
+uint8_t startBusy(void){
 	return (UCB0CTLW0 & UCTXSTT);
 }
 
-char stopBusy(void){
+uint8_t stopBusy(void){
 	return (UCB0CTLW0 & UCTXSTP);
 }
 
-char rxBusy(void){
+uint8_t rxBusy(void){
 	return !(UCB0IFG & UCRXIFG0);
 }
 

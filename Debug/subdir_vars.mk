@@ -17,7 +17,10 @@ C_SRCS += \
 ../lumen8.c \
 ../main.c \
 ../msp432_startup_ccs.c \
-../tsl2561.c 
+../spi_lumen8.c \
+../timerA_lumen8.c \
+../tsl2561.c \
+../ws2812_lumen8.c 
 
 OBJS += \
 ./clk_lumen8.obj \
@@ -27,7 +30,10 @@ OBJS += \
 ./lumen8.obj \
 ./main.obj \
 ./msp432_startup_ccs.obj \
-./tsl2561.obj 
+./spi_lumen8.obj \
+./timerA_lumen8.obj \
+./tsl2561.obj \
+./ws2812_lumen8.obj 
 
 C_DEPS += \
 ./clk_lumen8.pp \
@@ -37,7 +43,10 @@ C_DEPS += \
 ./lumen8.pp \
 ./main.pp \
 ./msp432_startup_ccs.pp \
-./tsl2561.pp 
+./spi_lumen8.pp \
+./timerA_lumen8.pp \
+./tsl2561.pp \
+./ws2812_lumen8.pp 
 
 C_DEPS__QUOTED += \
 "clk_lumen8.pp" \
@@ -47,7 +56,10 @@ C_DEPS__QUOTED += \
 "lumen8.pp" \
 "main.pp" \
 "msp432_startup_ccs.pp" \
-"tsl2561.pp" 
+"spi_lumen8.pp" \
+"timerA_lumen8.pp" \
+"tsl2561.pp" \
+"ws2812_lumen8.pp" 
 
 OBJS__QUOTED += \
 "clk_lumen8.obj" \
@@ -57,7 +69,10 @@ OBJS__QUOTED += \
 "lumen8.obj" \
 "main.obj" \
 "msp432_startup_ccs.obj" \
-"tsl2561.obj" 
+"spi_lumen8.obj" \
+"timerA_lumen8.obj" \
+"tsl2561.obj" \
+"ws2812_lumen8.obj" 
 
 C_SRCS__QUOTED += \
 "../clk_lumen8.c" \
@@ -67,6 +82,9 @@ C_SRCS__QUOTED += \
 "../lumen8.c" \
 "../main.c" \
 "../msp432_startup_ccs.c" \
-"../tsl2561.c" 
+"../spi_lumen8.c" \
+"../timerA_lumen8.c" \
+"../tsl2561.c" \
+"../ws2812_lumen8.c" 
 
 

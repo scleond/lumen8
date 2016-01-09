@@ -48,6 +48,7 @@ tsl2561.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/time
 tsl2561.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uart.h
 tsl2561.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h
 tsl2561.obj: ../tsl2561.h
+tsl2561.obj: ../clk_lumen8.h
 
 ../tsl2561.c: 
 ../tsl2561.h: 
@@ -97,3 +98,4 @@ S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/timer_a.h:
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uart.h: 
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h: 
 ../tsl2561.h: 
+../clk_lumen8.h: 

@@ -11,9 +11,12 @@
 #include "tsl2561.h"
 #include "isl29125.h"
 #include "ds1307.h"
+#include "timerA_lumen8.h"
 #include "driverlib.h"
 #include "i2c_lumen8.h"
 #include "clk_lumen8.h"
+#include "spi_lumen8.h"
+#include "ws2812_lumen8.h"
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -24,5 +27,6 @@
 #define READ_DS1307			(0x02)  // RTC
 
 void enableSensors(uint8_t tslIntegTime, uint8_t tslGain);
+void initGPIO(void);
 
 #endif /* LUMEN8_H_ */
