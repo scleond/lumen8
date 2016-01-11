@@ -10,7 +10,7 @@
 
 #include "driverlib.h"
 
-#define SMCLK_HZ	16000000  // 16 MHz. A way to derive this in the clk_lumen8 file?
+#define SMCLK_HZ	1500000  // 1.5 MHz. A way to derive this in the clk_lumen8 file?
 
 void initCLK();
 

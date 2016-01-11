@@ -3,6 +3,7 @@
 #include "lumen8.h"
 
 void initTimerA0(void);
+void delay(uint16_t delay);
 
 int main(void){
 	MAP_WDT_A_holdTimer();  // stop watchdog
@@ -24,26 +25,37 @@ int main(void){
 	uint8_t senseState = READ_TSL2561;
 
 	initCLK();  //set DCO for 16MHz. Adjusting this will require adjusting i2c baudrate settings
-	initI2C();
+//	initI2C();
 	initGPIO();
-	enableSensors(tslIntegTime, tslGain);
-//	initTimerA0();
+//	enableSensors(tslIntegTime, tslGain);
+	initTimerA0();
+
+	uint32_t smclk = CS_getSMCLK();
+	uint32_t mclk = CS_getMCLK();
 
     /* Enabling MASTER interrupts */
 //    MAP_Interrupt_enableMaster();
 
-    initSPI();
+	uint16_t i;
+	uint32_t j = 20;
 
-	// initialize LED strip
-	initStrip();			// ***** HAVE YOU SET YOUR NUM_LEDS DEFINE IN WS2812.C? ******
+	while(1){
+		j ++;
+		for (i = 0; i <= 24; i++){
+			MAP_GPIO_setOutputHighOnPin(GPIO_PORT_P5, GPIO_PIN5);
+			delay(j);  // on for 800 ns
+			MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P5, GPIO_PIN5);
+			_delay_cycles(40);  // off for 450 ns, may need to adjust
+		}
+		MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P5, GPIO_PIN5);
+		_delay_cycles(2400); // delay 50 us
 
-	// set strip color red
-	fillStrip(0xFF, 0x00, 0x00);
+//	testPattern();
+//	sendPattern();
+//	_delay_cycles(100000);
+//	blankPattern();
+//	sendPattern();
 
-	// show the strip
-	showStrip();
-
-//	while(1){
 ////	    MAP_GPIO_toggleOutputOnPin(GPIO_PORT_P5, GPIO_PIN5);
 //		if(senseState == READ_TSL2561){
 //			_delay_cycles(100000);
@@ -60,13 +72,21 @@ int main(void){
 //			rtcHours = readHours();
 //			senseState = READ_TSL2561;
 //		}
-//	}
+	}
 }
 
 void timer_a_0_isr(void)  // must add this to interrupt vector stack in startup_ccs.c
 {
-    MAP_GPIO_toggleOutputOnPin(GPIO_PORT_P5, GPIO_PIN5);
+//    MAP_GPIO_toggleOutputOnPin(GPIO_PORT_P5, GPIO_PIN5);
     MAP_Timer_A_clearCaptureCompareInterrupt(TIMER_A0_MODULE,
             TIMER_A_CAPTURECOMPARE_REGISTER_0);
+}
+
+void delay(uint16_t delay)
+{
+    while (delay--)
+    {
+        _delay_cycles(1);
+    }
 }
 

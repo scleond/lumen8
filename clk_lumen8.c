@@ -11,13 +11,10 @@ void initCLK(void){
 	/* Enabling floating point for DCO Frequency calculation */
 	MAP_FPU_enableModule();
 
-    /* Setting the DCO Frequency to 16MHz */
-    MAP_CS_setDCOFrequency(16000000);
+    /* Setting the DCO Frequency to 32MHz */
+    MAP_CS_setDCOFrequency(48000000);
 
-    /* SMCLK = DCO/1 = 16MHz*/
-    MAP_CS_initClockSignal(CS_SMCLK, CS_DCOCLK_SELECT, CS_CLOCK_DIVIDER_1);
-
-    /* SMCLK = DCO/1 = 16MHz*/
-    MAP_CS_initClockSignal(CS_SMCLK, CS_DCOCLK_SELECT, CS_CLOCK_DIVIDER_1);
+    /* SMCLK = DCO/32 = 1MHz*/
+    MAP_CS_initClockSignal(CS_SMCLK, CS_DCOCLK_SELECT, CS_CLOCK_DIVIDER_32);
 }
 
