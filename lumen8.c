@@ -16,3 +16,10 @@ void initGPIO(void){
 	MAP_GPIO_setAsOutputPin(GPIO_PORT_P5, GPIO_PIN5);
 	MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P5, GPIO_PIN5);
 }
+
+void delay(uint32_t delay){
+    while (delay--)
+    {
+        _delay_cycles(1);
+    }
+}

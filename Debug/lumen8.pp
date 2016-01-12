@@ -55,6 +55,7 @@ lumen8.obj: ../ds1307.h
 lumen8.obj: ../timerA_lumen8.h
 lumen8.obj: ../spi_lumen8.h
 lumen8.obj: ../ws2812.h
+lumen8.obj: ../lumen8.h
 lumen8.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/string.h
 lumen8.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdlib.h
 
@@ -113,5 +114,6 @@ S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h:
 ../timerA_lumen8.h: 
 ../spi_lumen8.h: 
 ../ws2812.h: 
+../lumen8.h: 
 S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/string.h: 
 S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdlib.h: 

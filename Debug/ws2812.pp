@@ -46,6 +46,18 @@ ws2812.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/timer
 ws2812.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/timer_a.h
 ws2812.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uart.h
 ws2812.obj: S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h
+ws2812.obj: ../lumen8.h
+ws2812.obj: ../tsl2561.h
+ws2812.obj: ../i2c_lumen8.h
+ws2812.obj: ../tsl2561.h
+ws2812.obj: ../clk_lumen8.h
+ws2812.obj: ../isl29125.h
+ws2812.obj: ../ds1307.h
+ws2812.obj: ../timerA_lumen8.h
+ws2812.obj: ../spi_lumen8.h
+ws2812.obj: ../ws2812.h
+ws2812.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/string.h
+ws2812.obj: S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdlib.h
 
 ../ws2812.c: 
 ../ws2812.h: 
@@ -93,3 +105,15 @@ S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/timer32.h:
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/timer_a.h: 
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/uart.h: 
 S:/ti/msp430/MSPWare_2_00_00_41/driverlib/driverlib/MSP432P4xx/wdt_a.h: 
+../lumen8.h: 
+../tsl2561.h: 
+../i2c_lumen8.h: 
+../tsl2561.h: 
+../clk_lumen8.h: 
+../isl29125.h: 
+../ds1307.h: 
+../timerA_lumen8.h: 
+../spi_lumen8.h: 
+../ws2812.h: 
+S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/string.h: 
+S:/ti/ccsv6/tools/compiler/ti-cgt-arm_5.2.3/include/stdlib.h: 

@@ -3,7 +3,6 @@
 #include "lumen8.h"
 
 void initTimerA0(void);
-void delay(uint16_t delay);
 
 int main(void){
 	MAP_WDT_A_holdTimer();  // stop watchdog
@@ -11,7 +10,7 @@ int main(void){
 	static uint8_t tslIntegTime = TSL2561_INTEGRATIONTIME_101MS;  // integration time and gain used for lux calc. 101ms gives more consistent result than 13ms for now
 	static uint8_t tslGain = TSL2561_GAIN_0X;
 
-	static uint8_t avgCounts = 4;
+	static uint8_t avgCounts = 2;
 	uint16_t lux = 0;
 	uint16_t avgLux = 0;
 
@@ -24,11 +23,11 @@ int main(void){
 
 	uint8_t senseState = READ_TSL2561;
 
-	initCLK();  //set DCO for 16MHz. Adjusting this will require adjusting i2c baudrate settings
-//	initI2C();
+	initCLK();  //set DCO for 48MHz. Adjusting this will require adjusting i2c baudrate settings
+	initI2C();
 	initGPIO();
-//	enableSensors(tslIntegTime, tslGain);
-	initTimerA0();
+	enableSensors(tslIntegTime, tslGain);
+//	initTimerA0();
 
 	uint32_t smclk = CS_getSMCLK();
 	uint32_t mclk = CS_getMCLK();
@@ -36,42 +35,23 @@ int main(void){
     /* Enabling MASTER interrupts */
 //    MAP_Interrupt_enableMaster();
 
-	uint16_t i;
-	uint32_t j = 20;
-
+	testPattern();
 	while(1){
-		j ++;
-		for (i = 0; i <= 24; i++){
-			MAP_GPIO_setOutputHighOnPin(GPIO_PORT_P5, GPIO_PIN5);
-			delay(j);  // on for 800 ns
-			MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P5, GPIO_PIN5);
-			_delay_cycles(40);  // off for 450 ns, may need to adjust
+		heartbeat(lux);
+		if(senseState == READ_TSL2561){
+			lux = CalculateLux(tslGain, tslIntegTime, TSL2561_PACKAGE_T_FN_CL);
+			avgLux = ((avgLux * (avgCounts-1)) + lux)/avgCounts;
+			senseState = READ_ISL29125;
 		}
-		MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P5, GPIO_PIN5);
-		_delay_cycles(2400); // delay 50 us
-
-//	testPattern();
-//	sendPattern();
-//	_delay_cycles(100000);
-//	blankPattern();
-//	sendPattern();
-
-////	    MAP_GPIO_toggleOutputOnPin(GPIO_PORT_P5, GPIO_PIN5);
-//		if(senseState == READ_TSL2561){
-//			_delay_cycles(100000);
-//			lux = CalculateLux(tslGain, tslIntegTime, TSL2561_PACKAGE_T_FN_CL);
-//			avgLux = ((avgLux * (avgCounts-1)) + lux)/avgCounts;
-//			senseState = READ_ISL29125;
-//		}
-//		else if(senseState == READ_ISL29125){
-////			islID = readDevID_ISL29125();
-//			senseState = READ_DS1307;
-//		}
-//		else if(senseState == READ_DS1307){
-//			rtcMinutes = readMinutes();
-//			rtcHours = readHours();
-//			senseState = READ_TSL2561;
-//		}
+		else if(senseState == READ_ISL29125){
+//			islID = readDevID_ISL29125();
+			senseState = READ_DS1307;
+		}
+		else if(senseState == READ_DS1307){
+			rtcMinutes = readMinutes();
+			rtcHours = readHours();
+			senseState = READ_TSL2561;
+		}
 	}
 }
 
@@ -82,11 +62,4 @@ void timer_a_0_isr(void)  // must add this to interrupt vector stack in startup_
             TIMER_A_CAPTURECOMPARE_REGISTER_0);
 }
 
-void delay(uint16_t delay)
-{
-    while (delay--)
-    {
-        _delay_cycles(1);
-    }
-}
 

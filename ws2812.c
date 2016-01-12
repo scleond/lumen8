@@ -17,16 +17,16 @@ LED leds[numLED] = {{0,0,0}};
 
 void sendBit(uint8_t bit){
 	if(bit == 1){
-		MAP_GPIO_setOutputHighOnPin(GPIO_PORT_P5, GPIO_PIN5);
-		_delay_cycles(6);  // on for 800 ns
-		MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P5, GPIO_PIN5);
-		_delay_cycles(2);  // off for 450 ns, may need to adjust
+		P5OUT |= BIT5;
+		_delay_cycles(10);  // on for 800 ns
+		P5OUT &= ~BIT5;
+		_delay_cycles(10);  // off for 450 ns, may need to adjust
 	}
 	else{
-		MAP_GPIO_setOutputHighOnPin(GPIO_PORT_P5, GPIO_PIN5);
-		_delay_cycles(6);  // on for 400 ns
-		MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P5, GPIO_PIN5);
-		_delay_cycles(2); // off for 850 ns
+		P5OUT |= BIT5;
+		_delay_cycles(2);  // on for 400 ns
+		P5OUT &= ~BIT5;
+		_delay_cycles(10);  // off for 850 ns, may need to adjust
 	}
 }
 
@@ -64,19 +64,76 @@ void blankPattern(void){
 void testPattern(void){
 	uint8_t loc;
 	for(loc = 0; loc < numLED; loc++){
-		if(loc < 20){
-			setColor(loc,0x0F,0x0F,0x0F);
+		if(loc == 0){
+			setColor(loc,0x0F,0x00,0x00);
 		}
-		else if((loc >= 20) & (loc < 40)){
-			setColor(loc,0x0F,0x0F,0x0F);
+		if(loc == 1){
+			setColor(loc,0x00,0x0F,0x00);
 		}
-		else if(loc >= 40){
-			setColor(loc,0x0F,0x0F,0x0F);
+		if(loc == 2){
+			setColor(loc,0x00,0x00,0x0F);
+		}
+
+//		if(loc < 10){
+//			setColor(loc,0x0A,0x00,0x00);
+//		}
+//		else if((loc >= 10) & (loc < 20)){
+//			setColor(loc,0x0A,0x0A,0x00);
+//		}
+//		else if((loc >= 20) & (loc < 30)){
+//			setColor(loc,0x00,0x0A,0x00);
+//		}
+//		else if((loc >= 30) & (loc < 40)){
+//			setColor(loc,0x00,0x0A,0x0A);
+//		}
+//		else if((loc >= 40) & (loc < 50)){
+//			setColor(loc,0x00,0x00,0x0A);
+//		}
+//		else if(loc >= 50){
+//			setColor(loc,0x0A,0x00,0x0A);
+//		}
+	}
+}
+
+void rotatePatternForward(void){
+	uint8_t loc;
+	uint8_t tempValRed = leds[0].red;
+	uint8_t tempValBlue = leds[0].blue;
+	uint8_t tempValGreen = leds[0].green;
+	for(loc = 0; loc < numLED; loc++){
+		if(loc == numLED - 1){
+			leds[loc].red = tempValRed;
+			leds[loc].green = tempValGreen;
+			leds[loc].blue = tempValBlue;
+		}
+		else{
+			leds[loc].red = leds[loc+1].red;
+			leds[loc].green = leds[loc+1].green;
+			leds[loc].blue = leds[loc+1].blue;
 		}
 	}
 }
 
+void rotatePatternBackward(void){
+	int8_t loc;
+	uint8_t tempValRed = leds[numLED - 1].red;
+	uint8_t tempValBlue = leds[numLED - 1].blue;
+	uint8_t tempValGreen = leds[numLED - 1].green;
+	for(loc = numLED - 1; loc >= 0; loc--){
+		if(loc == 0){
+			leds[loc].red = tempValRed;
+			leds[loc].green = tempValGreen;
+			leds[loc].blue = tempValBlue;
+		}
+		else{
+			leds[loc].red = leds[loc-1].red;
+			leds[loc].green = leds[loc-1].green;
+			leds[loc].blue = leds[loc-1].blue;
+		}
+	}
+}
 void sendPattern(void){
+	_disable_interrupts();
 	uint8_t loc,color;
 	for(loc = 0; loc < numLED; loc++){
 		uint8_t rgb[3] = {leds[loc].green, leds[loc].red, leds[loc].blue};
@@ -86,5 +143,25 @@ void sendPattern(void){
 		}
 	}
 	MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P5, GPIO_PIN5);
-	_delay_cycles(2400); // delay 50 us
+	_delay_cycles(240); // delay 50 us
+	_enable_interrupts();
 }
+
+void heartbeat(uint16_t maxLED){
+	uint8_t j = 0;
+	uint8_t i;
+	for(i = 0; i < maxLED*2; i++){
+		sendPattern();
+		if(i < maxLED){
+			j++;
+			rotatePatternBackward();
+		}
+		else{
+			j--;
+			rotatePatternForward();
+		}
+		delay(10);
+	}
+
+}
+

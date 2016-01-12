@@ -28,5 +28,6 @@
 
 void enableSensors(uint8_t tslIntegTime, uint8_t tslGain);
 void initGPIO(void);
+void delay(uint32_t delay);
 
 #endif /* LUMEN8_H_ */
