@@ -28,6 +28,8 @@ uint8_t readDate(void);
 uint8_t readMonth(void);
 uint8_t readYear(void);
 
+uint8_t bcd2decimal(uint8_t bcd);
+
 
 /* used in main.c to set time once. very hacky.*/
 //	i2cWriteByte(DS1307_ADDR, DS1307_SEC,0x00);

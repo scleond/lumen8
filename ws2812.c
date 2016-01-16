@@ -165,3 +165,36 @@ void heartbeat(uint16_t maxLED){
 
 }
 
+void amplitudeDisplay(uint16_t maxLED){
+	uint16_t loc;
+	for(loc = 0; loc < numLED; loc++){
+		if(loc < maxLED){
+			if(loc < maxLED*.2){
+				setColor(loc,0x0F,0x00,0x00);
+			}
+			else if(loc < maxLED*0.4){
+				setColor(loc,0x0F,0x01,0x00);
+			}
+			else if(loc < maxLED*0.6){
+				setColor(loc,0x0F,0x02,0x00);
+			}
+			else if(loc < maxLED*0.8){
+				setColor(loc,0x0F,0x03,0x00);
+			}
+			else{
+				setColor(loc,0x0F,0x04,0x00);
+			}
+		}
+		else{
+			setColor(loc,0x00,0x00,0x00);
+		}
+	}
+}
+
+void fillPattern(uint16_t brightness){
+	uint16_t loc;
+		for(loc = 0; loc < numLED; loc++){
+			setColor(loc,brightness,brightness,brightness);
+		}
+}
+

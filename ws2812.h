@@ -23,5 +23,7 @@ void sendPattern(void);
 void rotatePatternForward(void);
 void rotatePatternBackward(void);
 void heartbeat(uint16_t maxLED);
+void amplitudeDisplay(uint16_t maxLED);
+void fillPattern(uint16_t brightness);
 
 #endif /* WS2812_H_ */

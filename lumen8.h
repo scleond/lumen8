@@ -26,6 +26,8 @@
 #define READ_ISL29125		(0x01)  // rgb sensor
 #define READ_DS1307			(0x02)  // RTC
 
+#define MAX_BRIGHTNESS		(25)
+
 void enableSensors(uint8_t tslIntegTime, uint8_t tslGain);
 void initGPIO(void);
 void delay(uint32_t delay);

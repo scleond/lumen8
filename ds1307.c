@@ -43,4 +43,11 @@ uint8_t readYear(){
 	return rxWord;
 }
 
+uint8_t bcd2decimal(uint8_t bcd){
+	uint8_t dec;
+	dec = ((bcd & 0xF0) >> 4) * 10;  // mask upper nibble (10s place)
+	dec += (bcd & 0x0F);
+	return dec;
+}
+
 

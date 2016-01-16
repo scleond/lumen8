@@ -1,34 +1,33 @@
 ******************************************************************************
                   TI ARM Linker PC v5.2.3                      
 ******************************************************************************
->> Linked Mon Jan 11 19:13:59 2016
+>> Linked Fri Jan 15 20:40:14 2016
 
 OUTPUT FILE NAME:   <lumen.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 0000158d
+ENTRY POINT SYMBOL: "_c_int00"  address: 00001789
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  MAIN                  00000000   00040000  00001a5c  0003e5a4  R  X
+  MAIN                  00000000   00040000  00001bc0  0003e440  R  X
   INFO                  00200000   00004000  00000000  00004000  R  X
   SRAM_CODE             01000000   00010000  00000000  00010000  RW X
-  SRAM_DATA             20000000   00010000  000002d3  0000fd2d  RW  
+  SRAM_DATA             20000000   00010000  000002d0  0000fd30  RW  
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00001a60   00001a60    r-x
+00000000    00000000    00001bc0   00001bc0    r-x
   00000000    00000000    00000144   00000144    r-- .intvecs
-  00000144    00000144    00001894   00001894    r-x .text
-  000019d8    000019d8    00000044   00000044    r-- .const
-  00001a20    00001a20    00000040   00000040    r-- .cinit
-20000000    20000000    000000d4   00000000    rw-
-  20000000    20000000    000000cb   00000000    rw- .data
-  200000cc    200000cc    00000008   00000000    rw- .bss
+  00000144    00000144    000019f8   000019f8    r-x .text
+  00001b3c    00001b3c    0000005c   0000005c    r-- .const
+  00001b98    00001b98    00000028   00000028    r-- .cinit
+20000000    20000000    000000d0   00000000    rw-
+  20000000    20000000    000000d0   00000000    rw- .data
 2000fe00    2000fe00    00000200   00000000    rw-
   2000fe00    2000fe00    00000200   00000000    rw- .stack
 
@@ -41,83 +40,70 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    00000144     
                   00000000    00000144     msp432_startup_ccs.obj (.intvecs)
 
-.text      0    00000144    00001894     
-                  00000144    000004a4     ws2812.obj (.text)
-                  000005e8    000002f4     tsl2561.obj (.text)
-                  000008dc    0000023c     i2c_lumen8.obj (.text)
-                  00000b18    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.obj (.text)
-                  00000cce    00000136                                   : fd_div_t2.obj (.text)
-                  00000e04    00000130     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOFrequency)
-                  00000f34    000000fc     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_mul_t2.obj (.text)
-                  00001030    000000ec     main.obj (.text)
-                  0000111c    000000e0     msp432p4xx_driverlib.lib : cs.o (.text:CS_initClockSignal)
-                  000011fc    0000009c                              : cs.o (.text:_CSComputeCLKFrequency)
-                  00001298    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
-                  00001334    0000008c     msp432p4xx_driverlib.lib : cs.o (.text:CS_getDCOFrequency)
-                  000013c0    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.obj (.text)
-                  0000143a    00000078     ds1307.obj (.text)
-                  000014b2    00000002     --HOLE-- [fill = 0]
-                  000014b4    0000006c     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.obj (.text)
-                  00001520    0000006a                                   : copy_decompress_rle.obj (.text)
-                  0000158a    00000002     --HOLE-- [fill = 0]
-                  0000158c    00000050                                   : boot.obj (.text)
-                  000015dc    0000004e     lumen8.obj (.text)
-                  0000162a    00000002     --HOLE-- [fill = 0]
-                  0000162c    0000004c     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
-                  00001678    0000004c                              : cs.o (.text:_CSGetDOCFrequency)
-                  000016c4    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
-                  00001710    00000048     msp432p4xx_driverlib.lib : cs.o (.text:_CSGetDividerValue)
-                  00001758    00000048     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_toi_t2.obj (.text)
-                  000017a0    00000044                                   : exit.obj (.text)
-                  000017e4    00000038                                   : fs_tod_t2.obj (.text)
-                  0000181c    00000030     msp432p4xx_driverlib.lib : cs.o (.text:CS_tuneDCOFrequency)
-                  0000184c    0000002e     rtsv7M4_T_le_v4SPD16_eabi.lib : i_tofd_t2.obj (.text)
-                  0000187a    00000002     --HOLE-- [fill = 0]
-                  0000187c    00000028     clk_lumen8.obj (.text)
-                  000018a4    00000024     msp432p4xx_driverlib.lib : cs.o (.text:CS_clearInterruptFlag)
-                  000018c8    00000024                              : cs.o (.text:CS_setDCOCenteredFrequency)
-                  000018ec    00000024                              : gpio.o (.text:GPIO_setAsOutputPin)
-                  00001910    00000022     isl29125.obj (.text)
-                  00001932    00000002     --HOLE-- [fill = 0]
-                  00001934    00000018     msp432p4xx_driverlib.lib : cs.o (.text:CS_getMCLK)
-                  0000194c    00000018                              : cs.o (.text:CS_getSMCLK)
-                  00001964    00000018                              : gpio.o (.text:GPIO_setOutputLowOnPin)
-                  0000197c    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
-                  00001994    00000014                                   : _lock.obj (.text)
-                  000019a8    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
-                  000019b6    0000000c                                   : copy_zero_init.obj (.text:decompress:ZI)
-                  000019c2    0000000c     msp432_startup_ccs.obj (.text)
-                  000019ce    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
-                  000019d4    00000004                                   : pre_init.obj (.text)
+.text      0    00000144    000019f8     
+                  00000144    0000063c     ws2812.obj (.text)
+                  00000780    000002f4     tsl2561.obj (.text)
+                  00000a74    0000023c     i2c_lumen8.obj (.text)
+                  00000cb0    000001bc     main.obj (.text)
+                  00000e6c    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.obj (.text)
+                  00001022    00000136                                   : fd_div_t2.obj (.text)
+                  00001158    00000130     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOFrequency)
+                  00001288    000000fc     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_mul_t2.obj (.text)
+                  00001384    000000e0     msp432p4xx_driverlib.lib : cs.o (.text:CS_initClockSignal)
+                  00001464    000000ae     ds1307.obj (.text)
+                  00001512    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
+                  000015ae    00000086                                   : fd_cmp_t2.obj (.text:__aeabi_cdcmple)
+                  00001634    0000007a                                   : memset_t2.obj (.text)
+                  000016ae    00000002     --HOLE-- [fill = 0]
+                  000016b0    0000006c                                   : autoinit.obj (.text)
+                  0000171c    0000006a                                   : copy_decompress_rle.obj (.text)
+                  00001786    00000002     --HOLE-- [fill = 0]
+                  00001788    00000050                                   : boot.obj (.text)
+                  000017d8    0000004e     lumen8.obj (.text)
+                  00001826    00000002     --HOLE-- [fill = 0]
+                  00001828    0000004c     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionInputPin)
+                  00001874    0000004c     rtsv7M4_T_le_v4SPD16_eabi.lib : cpy_tbl.obj (.text)
+                  000018c0    00000048                                   : fd_toi_t2.obj (.text)
+                  00001908    00000044                                   : exit.obj (.text)
+                  0000194c    0000003c     timerA_lumen8.obj (.text)
+                  00001988    00000038     rtsv7M4_T_le_v4SPD16_eabi.lib : fs_tod_t2.obj (.text)
+                  000019c0    00000030     msp432p4xx_driverlib.lib : cs.o (.text:CS_tuneDCOFrequency)
+                  000019f0    0000002e     rtsv7M4_T_le_v4SPD16_eabi.lib : i_tofd_t2.obj (.text)
+                  00001a1e    00000002     --HOLE-- [fill = 0]
+                  00001a20    00000028     clk_lumen8.obj (.text)
+                  00001a48    00000024     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOCenteredFrequency)
+                  00001a6c    00000024                              : gpio.o (.text:GPIO_setAsOutputPin)
+                  00001a90    00000022     isl29125.obj (.text)
+                  00001ab2    00000020     rtsv7M4_T_le_v4SPD16_eabi.lib : u_tofd_t2.obj (.text)
+                  00001ad2    00000002     --HOLE-- [fill = 0]
+                  00001ad4    00000018     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setOutputLowOnPin)
+                  00001aec    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
+                  00001b04    00000014                                   : _lock.obj (.text)
+                  00001b18    0000000e                                   : copy_decompress_none.obj (.text:decompress:none)
+                  00001b26    0000000c     msp432_startup_ccs.obj (.text)
+                  00001b32    00000006     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_rle.obj (.text:decompress:rle24)
+                  00001b38    00000004                                   : pre_init.obj (.text)
 
-.const     0    000019d8    00000044     
-                  000019d8    00000030     msp432p4xx_driverlib.lib : gpio.o (.const:GPIO_PORT_TO_BASE)
-                  00001a08    00000014     i2c_lumen8.obj (.const)
+.const     0    00001b3c    0000005c     
+                  00001b3c    00000030     msp432p4xx_driverlib.lib : gpio.o (.const:GPIO_PORT_TO_BASE)
+                  00001b6c    00000018     timerA_lumen8.obj (.const)
+                  00001b84    00000014     i2c_lumen8.obj (.const)
 
-.cinit     0    00001a20    00000040     
-                  00001a20    00000015     (.cinit..data.load) [load image, compression = rle]
-                  00001a35    00000003     --HOLE-- [fill = 0]
-                  00001a38    0000000c     (__TI_handler_table)
-                  00001a44    00000004     --HOLE-- [fill = 0]
-                  00001a48    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00001a50    00000010     (__TI_cinit_table)
+.cinit     0    00001b98    00000028     
+                  00001b98    00000018     (.cinit..data.load) [load image, compression = rle]
+                  00001bb0    00000008     (__TI_handler_table)
+                  00001bb8    00000008     (__TI_cinit_table)
 
-.data      0    20000000    000000cb     UNINITIALIZED
+.data      0    20000000    000000d0     UNINITIALIZED
                   20000000    000000b4     ws2812.obj (.data:leds)
                   200000b4    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.data)
                   200000bc    00000008                                   : exit.obj (.data)
-                  200000c4    00000004                                   : stkdepth_vars.obj (.data)
-                  200000c8    00000003     main.obj (.data)
-
-.bss       0    200000cc    00000008     UNINITIALIZED
-                  200000cc    00000004     (.common:hfxtFreq)
-                  200000d0    00000004     (.common:lfxtFreq)
+                  200000c4    00000005     main.obj (.data)
+                  200000c9    00000003     --HOLE--
+                  200000cc    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : stkdepth_vars.obj (.data)
 
 .TI.persistent 
 *          0    20000000    00000000     UNINITIALIZED
-
-.TI.noinit 
-*          0    200000cc    00000000     UNINITIALIZED
 
 .stack     0    2000fe00    00000200     UNINITIALIZED
                   2000fe00    00000200     --HOLE--
@@ -125,126 +111,129 @@ section   page    origin      length       input sections
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00001a50 records: 2, size/record: 8, table size: 16
-	.data: load addr=00001a20, load size=00000015 bytes, run addr=20000000, run size=000000cb bytes, compression=rle
-	.bss: load addr=00001a48, load size=00000008 bytes, run addr=200000cc, run size=00000008 bytes, compression=zero_init
+__TI_cinit_table @ 00001bb8 records: 1, size/record: 8, table size: 8
+	.data: load addr=00001b98, load size=00000018 bytes, run addr=20000000, run size=000000d0 bytes, compression=rle
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00001a38 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 00001bb0 records: 2, size/record: 4, table size: 8
 	index: 0, handler: __TI_decompress_rle24
 	index: 1, handler: __TI_decompress_none
-	index: 2, handler: __TI_zero_init
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
 address   name                                      
 -------   ----                                      
-000017a1  C$$EXIT                                   
-000018a5  CS_clearInterruptFlag                     
-00001335  CS_getDCOFrequency                        
-00001935  CS_getMCLK                                
-0000194d  CS_getSMCLK                               
-0000111d  CS_initClockSignal                        
-000018c9  CS_setDCOCenteredFrequency                
-00000e05  CS_setDCOFrequency                        
-0000181d  CS_tuneDCOFrequency                       
-0000068f  CalculateLux                              
-000018ed  GPIO_setAsOutputPin                       
-0000162d  GPIO_setAsPeripheralModuleFunctionInputPin
-00001965  GPIO_setOutputLowOnPin                    
+00001909  C$$EXIT                                   
+00001385  CS_initClockSignal                        
+00001a49  CS_setDCOCenteredFrequency                
+00001159  CS_setDCOFrequency                        
+000019c1  CS_tuneDCOFrequency                       
+00000827  CalculateLux                              
+00001a6d  GPIO_setAsOutputPin                       
+00001829  GPIO_setAsPeripheralModuleFunctionInputPin
+00001ad5  GPIO_setOutputLowOnPin                    
 UNDEFED   SHT$$INIT_ARRAY$$Base                     
 UNDEFED   SHT$$INIT_ARRAY$$Limit                    
 4000480c  WDTCTL_SYM                                
 20010000  __STACK_END                               
 00000200  __STACK_SIZE                              
-00001a50  __TI_CINIT_Base                           
-00001a60  __TI_CINIT_Limit                          
-00001a38  __TI_Handler_Table_Base                   
-00001a44  __TI_Handler_Table_Limit                  
-000014b5  __TI_auto_init                            
+00001bb8  __TI_CINIT_Base                           
+00001bc0  __TI_CINIT_Limit                          
+00001bb0  __TI_Handler_Table_Base                   
+00001bb8  __TI_Handler_Table_Limit                  
+000016b1  __TI_auto_init                            
 200000bc  __TI_cleanup_ptr                          
-000019a9  __TI_decompress_none                      
-000019cf  __TI_decompress_rle24                     
+00001b19  __TI_decompress_none                      
+00001b33  __TI_decompress_rle24                     
 200000c0  __TI_dtors_ptr                            
 00000000  __TI_static_base__                        
-000019b7  __TI_zero_init                            
-00001759  __aeabi_d2iz                              
-00000b23  __aeabi_dadd                              
-00000ccf  __aeabi_ddiv                              
-00000f35  __aeabi_dmul                              
-00000b19  __aeabi_dsub                              
-000017e5  __aeabi_f2d                               
-0000184d  __aeabi_i2d                               
-000013c1  __aeabi_memclr                            
-000013c1  __aeabi_memclr4                           
-000013c1  __aeabi_memclr8                           
-00001299  __aeabi_memcpy                            
-00001299  __aeabi_memcpy4                           
-00001299  __aeabi_memcpy8                           
-000013c3  __aeabi_memset                            
-000013c3  __aeabi_memset4                           
-000013c3  __aeabi_memset8                           
+000015af  __aeabi_cdcmpeq                           
+000015af  __aeabi_cdcmple                           
+000018c1  __aeabi_d2iz                              
+00000e77  __aeabi_dadd                              
+00001023  __aeabi_ddiv                              
+00001289  __aeabi_dmul                              
+00000e6d  __aeabi_dsub                              
+00001989  __aeabi_f2d                               
+000019f1  __aeabi_i2d                               
+00001635  __aeabi_memclr                            
+00001635  __aeabi_memclr4                           
+00001635  __aeabi_memclr8                           
+00001513  __aeabi_memcpy                            
+00001513  __aeabi_memcpy4                           
+00001513  __aeabi_memcpy8                           
+00001637  __aeabi_memset                            
+00001637  __aeabi_memset4                           
+00001637  __aeabi_memset8                           
+00001ab3  __aeabi_ui2d                              
 ffffffff  __binit__                                 
 ffffffff  __c_args__                                
 2000fe00  __stack                                   
-0000197d  _args_main                                
-0000158d  _c_int00                                  
+00001aed  _args_main                                
+00001789  _c_int00                                  
 200000b4  _lock                                     
-000019a3  _nop                                      
-0000199b  _register_lock                            
-00001995  _register_unlock                          
-000019d5  _system_pre_init                          
+00001b13  _nop                                      
+00001b0b  _register_lock                            
+00001b05  _register_unlock                          
+00001b39  _system_pre_init                          
 200000b8  _unlock                                   
-000017a5  abort                                     
+0000190d  abort                                     
+200000c5  adjustLight                               
+000005db  amplitudeDisplay                          
+000014dd  bcd2decimal                               
 ffffffff  binit                                     
 00000251  blankPattern                              
-000016c5  copy_in                                   
-0000160d  delay                                     
-000015dd  enableSensors                             
-000005e9  enableTSL2561                             
-000017ad  exit                                      
+00001875  copy_in                                   
+00001809  delay                                     
+000017d9  enableSensors                             
+00000781  enableTSL2561                             
+00001915  exit                                      
+00000719  fillPattern                               
 00000579  heartbeat                                 
-00001a08  i2cConfig                                 
-00000925  i2cFlush                                  
-000009ed  i2cReadByte                               
-00000a65  i2cReadWord                               
-0000098b  i2cWriteByte                              
-0000187d  initCLK                                   
-000015f9  initGPIO                                  
-000008dd  initI2C                                   
-00001925  initISL29125                              
+00001b84  i2cConfig                                 
+00000abd  i2cFlush                                  
+00000b85  i2cReadByte                               
+00000bfd  i2cReadWord                               
+00000b23  i2cWriteByte                              
+00001a21  initCLK                                   
+000017f5  initGPIO                                  
+00000a75  initI2C                                   
+00001aa5  initISL29125                              
+0000194d  initTimerA0                               
 00000000  interruptVectors                          
 20000000  leds                                      
-00001031  main                                      
-200000c4  main_func_sp                              
-00001299  memcpy                                    
-000013c9  memset                                    
-0000063f  readChan0Word_TSL2561                     
-00000617  readChan0_TSL2561                         
-0000067b  readChan1Word_TSL2561                     
-00000653  readChan1_TSL2561                         
-00001477  readDate                                  
-00001911  readDevID_ISL29125                        
-00001463  readHours                                 
-0000144f  readMinutes                               
-0000148b  readMonth                                 
-0000143b  readSeconds                               
-0000149f  readYear                                  
+00000cb1  main                                      
+200000cc  main_func_sp                              
+00001513  memcpy                                    
+0000163d  memset                                    
+000007d7  readChan0Word_TSL2561                     
+000007af  readChan0_TSL2561                         
+00000813  readChan1Word_TSL2561                     
+000007eb  readChan1_TSL2561                         
+000014a1  readDate                                  
+00001a91  readDevID_ISL29125                        
+0000148d  readHours                                 
+00001479  readMinutes                               
+000014b5  readMonth                                 
+00001465  readSeconds                               
+200000c4  readSensors                               
+000014c9  readYear                                  
 00000401  rotatePatternBackward                     
 00000333  rotatePatternForward                      
-00000977  rxBusy                                    
+00000b0f  rxBusy                                    
 00000145  sendBit                                   
 000001b1  sendByte                                  
 000004c7  sendPattern                               
 00000209  setColor                                  
-00000963  startBusy                                 
-0000096d  stopBusy                                  
+00000afb  startBusy                                 
+00000b05  stopBusy                                  
 000002cf  testPattern                               
-000010f5  timer_a_0_isr                             
-0000094f  txBusy                                    
+00000e29  timer_a_0_isr                             
+00000ae7  txBusy                                    
+00001b6c  upConfig                                  
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -263,89 +252,94 @@ address   name
 00000401  rotatePatternBackward                     
 000004c7  sendPattern                               
 00000579  heartbeat                                 
-000005e9  enableTSL2561                             
-00000617  readChan0_TSL2561                         
-0000063f  readChan0Word_TSL2561                     
-00000653  readChan1_TSL2561                         
-0000067b  readChan1Word_TSL2561                     
-0000068f  CalculateLux                              
-000008dd  initI2C                                   
-00000925  i2cFlush                                  
-0000094f  txBusy                                    
-00000963  startBusy                                 
-0000096d  stopBusy                                  
-00000977  rxBusy                                    
-0000098b  i2cWriteByte                              
-000009ed  i2cReadByte                               
-00000a65  i2cReadWord                               
-00000b19  __aeabi_dsub                              
-00000b23  __aeabi_dadd                              
-00000ccf  __aeabi_ddiv                              
-00000e05  CS_setDCOFrequency                        
-00000f35  __aeabi_dmul                              
-00001031  main                                      
-000010f5  timer_a_0_isr                             
-0000111d  CS_initClockSignal                        
-00001299  __aeabi_memcpy                            
-00001299  __aeabi_memcpy4                           
-00001299  __aeabi_memcpy8                           
-00001299  memcpy                                    
-00001335  CS_getDCOFrequency                        
-000013c1  __aeabi_memclr                            
-000013c1  __aeabi_memclr4                           
-000013c1  __aeabi_memclr8                           
-000013c3  __aeabi_memset                            
-000013c3  __aeabi_memset4                           
-000013c3  __aeabi_memset8                           
-000013c9  memset                                    
-0000143b  readSeconds                               
-0000144f  readMinutes                               
-00001463  readHours                                 
-00001477  readDate                                  
-0000148b  readMonth                                 
-0000149f  readYear                                  
-000014b5  __TI_auto_init                            
-0000158d  _c_int00                                  
-000015dd  enableSensors                             
-000015f9  initGPIO                                  
-0000160d  delay                                     
-0000162d  GPIO_setAsPeripheralModuleFunctionInputPin
-000016c5  copy_in                                   
-00001759  __aeabi_d2iz                              
-000017a1  C$$EXIT                                   
-000017a5  abort                                     
-000017ad  exit                                      
-000017e5  __aeabi_f2d                               
-0000181d  CS_tuneDCOFrequency                       
-0000184d  __aeabi_i2d                               
-0000187d  initCLK                                   
-000018a5  CS_clearInterruptFlag                     
-000018c9  CS_setDCOCenteredFrequency                
-000018ed  GPIO_setAsOutputPin                       
-00001911  readDevID_ISL29125                        
-00001925  initISL29125                              
-00001935  CS_getMCLK                                
-0000194d  CS_getSMCLK                               
-00001965  GPIO_setOutputLowOnPin                    
-0000197d  _args_main                                
-00001995  _register_unlock                          
-0000199b  _register_lock                            
-000019a3  _nop                                      
-000019a9  __TI_decompress_none                      
-000019b7  __TI_zero_init                            
-000019cf  __TI_decompress_rle24                     
-000019d5  _system_pre_init                          
-00001a08  i2cConfig                                 
-00001a38  __TI_Handler_Table_Base                   
-00001a44  __TI_Handler_Table_Limit                  
-00001a50  __TI_CINIT_Base                           
-00001a60  __TI_CINIT_Limit                          
+000005db  amplitudeDisplay                          
+00000719  fillPattern                               
+00000781  enableTSL2561                             
+000007af  readChan0_TSL2561                         
+000007d7  readChan0Word_TSL2561                     
+000007eb  readChan1_TSL2561                         
+00000813  readChan1Word_TSL2561                     
+00000827  CalculateLux                              
+00000a75  initI2C                                   
+00000abd  i2cFlush                                  
+00000ae7  txBusy                                    
+00000afb  startBusy                                 
+00000b05  stopBusy                                  
+00000b0f  rxBusy                                    
+00000b23  i2cWriteByte                              
+00000b85  i2cReadByte                               
+00000bfd  i2cReadWord                               
+00000cb1  main                                      
+00000e29  timer_a_0_isr                             
+00000e6d  __aeabi_dsub                              
+00000e77  __aeabi_dadd                              
+00001023  __aeabi_ddiv                              
+00001159  CS_setDCOFrequency                        
+00001289  __aeabi_dmul                              
+00001385  CS_initClockSignal                        
+00001465  readSeconds                               
+00001479  readMinutes                               
+0000148d  readHours                                 
+000014a1  readDate                                  
+000014b5  readMonth                                 
+000014c9  readYear                                  
+000014dd  bcd2decimal                               
+00001513  __aeabi_memcpy                            
+00001513  __aeabi_memcpy4                           
+00001513  __aeabi_memcpy8                           
+00001513  memcpy                                    
+000015af  __aeabi_cdcmpeq                           
+000015af  __aeabi_cdcmple                           
+00001635  __aeabi_memclr                            
+00001635  __aeabi_memclr4                           
+00001635  __aeabi_memclr8                           
+00001637  __aeabi_memset                            
+00001637  __aeabi_memset4                           
+00001637  __aeabi_memset8                           
+0000163d  memset                                    
+000016b1  __TI_auto_init                            
+00001789  _c_int00                                  
+000017d9  enableSensors                             
+000017f5  initGPIO                                  
+00001809  delay                                     
+00001829  GPIO_setAsPeripheralModuleFunctionInputPin
+00001875  copy_in                                   
+000018c1  __aeabi_d2iz                              
+00001909  C$$EXIT                                   
+0000190d  abort                                     
+00001915  exit                                      
+0000194d  initTimerA0                               
+00001989  __aeabi_f2d                               
+000019c1  CS_tuneDCOFrequency                       
+000019f1  __aeabi_i2d                               
+00001a21  initCLK                                   
+00001a49  CS_setDCOCenteredFrequency                
+00001a6d  GPIO_setAsOutputPin                       
+00001a91  readDevID_ISL29125                        
+00001aa5  initISL29125                              
+00001ab3  __aeabi_ui2d                              
+00001ad5  GPIO_setOutputLowOnPin                    
+00001aed  _args_main                                
+00001b05  _register_unlock                          
+00001b0b  _register_lock                            
+00001b13  _nop                                      
+00001b19  __TI_decompress_none                      
+00001b33  __TI_decompress_rle24                     
+00001b39  _system_pre_init                          
+00001b6c  upConfig                                  
+00001b84  i2cConfig                                 
+00001bb0  __TI_Handler_Table_Base                   
+00001bb8  __TI_CINIT_Base                           
+00001bb8  __TI_Handler_Table_Limit                  
+00001bc0  __TI_CINIT_Limit                          
 20000000  leds                                      
 200000b4  _lock                                     
 200000b8  _unlock                                   
 200000bc  __TI_cleanup_ptr                          
 200000c0  __TI_dtors_ptr                            
-200000c4  main_func_sp                              
+200000c4  readSensors                               
+200000c5  adjustLight                               
+200000cc  main_func_sp                              
 2000fe00  __stack                                   
 20010000  __STACK_END                               
 4000480c  WDTCTL_SYM                                
@@ -355,4 +349,4 @@ ffffffff  binit
 UNDEFED   SHT$$INIT_ARRAY$$Base                     
 UNDEFED   SHT$$INIT_ARRAY$$Limit                    
 
-[103 symbols]
+[108 symbols]
